@@ -3,16 +3,20 @@
   <p>
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
   </p>
-<div style="display: flex; flexDirection: row; align-items: center; justify-content: center">
-  <button  style="border-radius: 10px; font-size: 26px" type="button" @click="handleDescrease">-</button>
-  <p style="margin-left: 10px; font-size: 28px">{{count}}</p>
-  <button style="margin-left: 10px; border-radius: 10px; font-size: 26px" type="button" @click="handleIncrease">+</button>
-</div>
-
+  <div style="display: flex; flexDirection: row; align-items: center; justify-content: center">
+    <button style="border-radius: 10px; font-size: 26px" type="button" @click="store.dispatch('decrement')">-</button>
+    <p style="margin-left: 10px; font-size: 28px">{{ store.state.count }}</p>
+    <button
+      style="margin-left: 10px; border-radius: 10px; font-size: 26px"
+      type="button"
+      @click="store.dispatch('increment')"
+    >+</button>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { store } from '../store'
 
 defineProps<{ msg: string }>()
 
